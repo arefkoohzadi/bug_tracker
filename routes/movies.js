@@ -1,5 +1,5 @@
 const { Movie, validate } = require("../models/movie");
-const { Genre } = require("../models/genre");
+const { Status } = require("../models/status");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 const validateObjectId = require("../middleware/validateObjectId");
@@ -19,14 +19,14 @@ router.post("/", [auth], async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const genre = await Genre.findById(req.body.genreId);
-  if (!genre) return res.status(400).send("Invalid genre.");
+  const status = await Status.findById(req.body.statusId);
+  if (!status) return res.status(400).send("Invalid status.");
 
   const movie = new Movie({
     title: req.body.title,
-    genre: {
-      _id: genre._id,
-      name: genre.name
+    status: {
+      _id: status._id,
+      name: status.name
     },
     numberInStock: req.body.numberInStock,
     dailyRentalRate: req.body.dailyRentalRate,
@@ -41,16 +41,16 @@ router.put("/:id", [auth], async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const genre = await Genre.findById(req.body.genreId);
-  if (!genre) return res.status(400).send("Invalid genre.");
+  const status = await Status.findById(req.body.statusId);
+  if (!status) return res.status(400).send("Invalid status.");
 
   const movie = await Movie.findByIdAndUpdate(
     req.params.id,
     {
       title: req.body.title,
-      genre: {
-        _id: genre._id,
-        name: genre.name
+      status: {
+        _id: status._id,
+        name: status.name
       },
       numberInStock: req.body.numberInStock,
       dailyRentalRate: req.body.dailyRentalRate
