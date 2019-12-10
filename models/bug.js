@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 const { statusSchema } = require("./status");
+const { prioritySchema } = require("./priority");
 
 const Bug = mongoose.model(
   "Bugs",
@@ -16,17 +17,16 @@ const Bug = mongoose.model(
       type: statusSchema,
       required: true
     },
-    numberInStock: {
-      type: Number,
-      required: true,
-      min: 0,
-      max: 255
+    priority: {
+      type: prioritySchema,
+      required: true
     },
-    dailyRentalRate: {
-      type: Number,
+    owner: {
+      type: String,
       required: true,
-      min: 0,
-      max: 255
+      trim: true,
+      minlength: 3,
+      maxlength: 255
     }
   })
 );
@@ -38,11 +38,10 @@ function validateBug(bug) {
       .max(50)
       .required(),
     statusId: Joi.objectId().required(),
-    numberInStock: Joi.number()
-      .min(0)
-      .required(),
-    dailyRentalRate: Joi.number()
-      .min(0)
+    priorityId: Joi.objectId().required(),
+    owner: Joi.string()
+      .min(3)
+      .max(50)
       .required()
   };
 

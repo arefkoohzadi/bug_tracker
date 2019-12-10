@@ -28,8 +28,7 @@ router.post("/", [auth], async (req, res) => {
       _id: status._id,
       name: status.name
     },
-    numberInStock: req.body.numberInStock,
-    dailyRentalRate: req.body.dailyRentalRate,
+    owner: req.body.owner,
     publishDate: moment().toJSON()
   });
   await bug.save();
@@ -52,8 +51,7 @@ router.put("/:id", [auth], async (req, res) => {
         _id: status._id,
         name: status.name
       },
-      numberInStock: req.body.numberInStock,
-      dailyRentalRate: req.body.dailyRentalRate
+      owner: req.body.owner
     },
     { new: true }
   );
