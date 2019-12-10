@@ -1,4 +1,4 @@
-const { Movie, validate } = require("../models/movie");
+const { Bug, validate } = require("../models/bug");
 const { Status } = require("../models/status");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
@@ -9,10 +9,10 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const movies = await Movie.find()
+  const bugs = await Bug.find()
     .select("-__v")
     .sort("name");
-  res.send(movies);
+  res.send(bugs);
 });
 
 router.post("/", [auth], async (req, res) => {
@@ -22,7 +22,7 @@ router.post("/", [auth], async (req, res) => {
   const status = await Status.findById(req.body.statusId);
   if (!status) return res.status(400).send("Invalid status.");
 
-  const movie = new Movie({
+  const bug = new Bug({
     title: req.body.title,
     status: {
       _id: status._id,
@@ -32,9 +32,9 @@ router.post("/", [auth], async (req, res) => {
     dailyRentalRate: req.body.dailyRentalRate,
     publishDate: moment().toJSON()
   });
-  await movie.save();
+  await bug.save();
 
-  res.send(movie);
+  res.send(bug);
 });
 
 router.put("/:id", [auth], async (req, res) => {
@@ -44,7 +44,7 @@ router.put("/:id", [auth], async (req, res) => {
   const status = await Status.findById(req.body.statusId);
   if (!status) return res.status(400).send("Invalid status.");
 
-  const movie = await Movie.findByIdAndUpdate(
+  const bug = await Bug.findByIdAndUpdate(
     req.params.id,
     {
       title: req.body.title,
@@ -58,28 +58,28 @@ router.put("/:id", [auth], async (req, res) => {
     { new: true }
   );
 
-  if (!movie)
-    return res.status(404).send("The movie with the given ID was not found.");
+  if (!bug)
+    return res.status(404).send("The bug with the given ID was not found.");
 
-  res.send(movie);
+  res.send(bug);
 });
 
 router.delete("/:id", [auth, admin], async (req, res) => {
-  const movie = await Movie.findByIdAndRemove(req.params.id);
+  const bug = await Bug.findByIdAndRemove(req.params.id);
 
-  if (!movie)
-    return res.status(404).send("The movie with the given ID was not found.");
+  if (!bug)
+    return res.status(404).send("The bug with the given ID was not found.");
 
-  res.send(movie);
+  res.send(bug);
 });
 
 router.get("/:id", validateObjectId, async (req, res) => {
-  const movie = await Movie.findById(req.params.id).select("-__v");
+  const bug = await Bug.findById(req.params.id).select("-__v");
 
-  if (!movie)
-    return res.status(404).send("The movie with the given ID was not found.");
+  if (!bug)
+    return res.status(404).send("The bug with the given ID was not found.");
 
-  res.send(movie);
+  res.send(bug);
 });
 
 module.exports = router;

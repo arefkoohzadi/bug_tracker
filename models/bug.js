@@ -2,8 +2,8 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 const { statusSchema } = require("./status");
 
-const Movie = mongoose.model(
-  "Movies",
+const Bug = mongoose.model(
+  "Bugs",
   new mongoose.Schema({
     title: {
       type: String,
@@ -31,7 +31,7 @@ const Movie = mongoose.model(
   })
 );
 
-function validateMovie(movie) {
+function validateBug(bug) {
   const schema = {
     title: Joi.string()
       .min(5)
@@ -46,8 +46,8 @@ function validateMovie(movie) {
       .required()
   };
 
-  return Joi.validate(movie, schema);
+  return Joi.validate(bug, schema);
 }
 
-exports.Movie = Movie;
-exports.validate = validateMovie;
+exports.Bug = Bug;
+exports.validate = validateBug;
