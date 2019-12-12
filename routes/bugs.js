@@ -1,5 +1,6 @@
 const { Bug, validate } = require("../models/bug");
 const { Status } = require("../models/status");
+const { priority } = require("../models/priority");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 const validateObjectId = require("../middleware/validateObjectId");
@@ -28,6 +29,10 @@ router.post("/", [auth], async (req, res) => {
       _id: status._id,
       name: status.name
     },
+    priority: {
+      _id: priority._id,
+      name: priority.name
+    },
     owner: req.body.owner,
     publishDate: moment().toJSON()
   });
@@ -43,6 +48,9 @@ router.put("/:id", [auth], async (req, res) => {
   const status = await Status.findById(req.body.statusId);
   if (!status) return res.status(400).send("Invalid status.");
 
+  const priority = await priority.findById(req.body.priorityId);
+  if (!priority) return res.status(400).send("Invalid priority.");
+
   const bug = await Bug.findByIdAndUpdate(
     req.params.id,
     {
@@ -50,6 +58,10 @@ router.put("/:id", [auth], async (req, res) => {
       status: {
         _id: status._id,
         name: status.name
+      },
+      priority: {
+        _id: priority._id,
+        name: priority.name
       },
       owner: req.body.owner
     },
