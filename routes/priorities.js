@@ -37,7 +37,7 @@ router.put("/:id", [auth, validateObjectId], async (req, res) => {
 
   if (!priority)
     return res
-      .priority(404)
+      .status(404)
       .send("The priority with the given ID was not found.");
 
   res.send(priority);
@@ -48,7 +48,7 @@ router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
 
   if (!priority)
     return res
-      .priority(404)
+      .status(404)
       .send("The priority with the given ID was not found.");
 
   res.send(priority);
@@ -59,7 +59,7 @@ router.get("/:id", validateObjectId, async (req, res) => {
 
   if (!priority)
     return res
-      .priority(404)
+      .status(404)
       .send("The priority with the given ID was not found.");
 
   res.send(priority);

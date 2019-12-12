@@ -1,11 +1,10 @@
 const { Bug, validate } = require("../models/bug");
 const { Status } = require("../models/status");
-const { priority } = require("../models/priority");
+const { Priority } = require("../models/priority");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 const validateObjectId = require("../middleware/validateObjectId");
 const moment = require("moment");
-const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
@@ -21,7 +20,10 @@ router.post("/", [auth], async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const status = await Status.findById(req.body.statusId);
-  if (!status) return res.status(400).send("Invalid status.");
+  if (!status) return res.status(400).send("Invalid status");
+
+  const priority = await Priority.findById(req.body.priorityId);
+  if (!priority) return res.status(400).send("Invalid priority");
 
   const bug = new Bug({
     title: req.body.title,
@@ -48,7 +50,7 @@ router.put("/:id", [auth], async (req, res) => {
   const status = await Status.findById(req.body.statusId);
   if (!status) return res.status(400).send("Invalid status.");
 
-  const priority = await priority.findById(req.body.priorityId);
+  const priority = await Priority.findById(req.body.priorityId);
   if (!priority) return res.status(400).send("Invalid priority.");
 
   const bug = await Bug.findByIdAndUpdate(

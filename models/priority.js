@@ -5,7 +5,7 @@ const prioritySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minlength: 5,
+    minlength: 3,
     maxlength: 50
   }
 });
@@ -15,7 +15,7 @@ const Priority = mongoose.model("Priority", prioritySchema);
 function validatePriority(priority) {
   const schema = {
     name: Joi.string()
-      .min(5)
+      .min(3)
       .max(50)
       .required()
   };
