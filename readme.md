@@ -1,12 +1,6 @@
 ## Introduction
 
-This project is the backend of Vidly, an imaginary video rental app. I've used Vidly as an example in several of my online programming courses, such as:
-
-- https://codewithmosh.com/p/mastering-react
-- https://codewithmosh.com/p/the-complete-node-js-course
-- https://codewithmosh.com/p/asp-net-mvc
-
-This is the implementation of Vidly in Node.js.
+The back-end Server of the Mazycode bug tracker developed using Node.js(Express) and MongoDB.
 
 ## Setup
 
@@ -30,13 +24,6 @@ Next, from the project folder, install the dependencies:
 
     node seed.js
 
-### Run the Tests
-
-You're almost done! Run the tests to make sure everything is working:
-
-    npm test
-
-All tests should pass.
 
 ### Start the Server
 
@@ -46,9 +33,9 @@ This will launch the Node server on port 3900. If that port is busy, you can set
 
 Open up your browser and head over to:
 
-http://localhost:3900/api/genres
+http://localhost:3900/api/statusList
 
-You should see the list of genres. That confirms that you have set up everything successfully.
+You should see the list of status. That confirms that you have set up everything successfully.
 
 ### (Optional) Environment Variables
 
