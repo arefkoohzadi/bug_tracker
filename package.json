@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "seed": "node seed.js",
-    "test": "jest --watchAll --verbose"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
