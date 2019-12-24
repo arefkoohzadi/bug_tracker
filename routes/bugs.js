@@ -35,8 +35,7 @@ router.post("/", [auth], async (req, res) => {
       _id: priority._id,
       name: priority.name
     },
-    owner: req.body.owner,
-    publishDate: moment().toJSON()
+    owner: req.body.owner
   });
   await bug.save();
 

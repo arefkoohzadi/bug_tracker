@@ -1,35 +1,37 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
+const timestamps = require("mongoose-timestamp");
 const { statusSchema } = require("./status");
 const { prioritySchema } = require("./priority");
 
-const Bug = mongoose.model(
-  "Bugs",
-  new mongoose.Schema({
-    title: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 5,
-      maxlength: 255
-    },
-    status: {
-      type: statusSchema,
-      required: true
-    },
-    priority: {
-      type: prioritySchema,
-      required: true
-    },
-    owner: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 3,
-      maxlength: 255
-    }
-  })
-);
+const bugSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 5,
+    maxlength: 255
+  },
+  status: {
+    type: statusSchema,
+    required: true
+  },
+  priority: {
+    type: prioritySchema,
+    required: true
+  },
+  owner: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 3,
+    maxlength: 255
+  }
+});
+
+bugSchema.plugin(timestamps);
+
+const Bug = mongoose.model("Bugs", bugSchema);
 
 function validateBug(bug) {
   const schema = {
