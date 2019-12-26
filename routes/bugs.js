@@ -35,7 +35,8 @@ router.post("/", [auth], async (req, res) => {
       _id: priority._id,
       name: priority.name
     },
-    owner: req.body.owner
+    owner: req.body.owner,
+    createdAt: moment().format("DD-MM-YYYY h:mm:ss")
   });
   await bug.save();
 

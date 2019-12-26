@@ -1,6 +1,5 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
-const timestamps = require("mongoose-timestamp");
 const { statusSchema } = require("./status");
 const { prioritySchema } = require("./priority");
 
@@ -26,10 +25,9 @@ const bugSchema = new mongoose.Schema({
     trim: true,
     minlength: 3,
     maxlength: 255
-  }
+  },
+  createdAt: String
 });
-
-bugSchema.plugin(timestamps);
 
 const Bug = mongoose.model("Bugs", bugSchema);
 
