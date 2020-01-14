@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:client": "npm start --prefix bug_tracker_client",
+    "dev:server": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +30,8 @@
     "winston-mongodb": "^3.0.0"
   },
   "devDependencies": {
-    "jest": "^22.2.2",
+    "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
     "supertest": "^3.0.0"
   }
 }
