@@ -1,50 +1,27 @@
-## Introduction
+## Mazy's Bug Tracker
 
-The back-end Server of the Mazycode bug tracker developed using Node.js(Express) and MongoDB.
+This is a simple tool for raising a bug, giving it specific status and priority, specifiying the exact date that the bug was created, editing the bug.
 
-## Setup
-
-Make sure to follow all these steps exactly as explained below. Do not miss any steps or you won't be able to run this application.
-
-### Install MongoDB
-
-To run this project, you need to install the latest version of MongoDB Community Edition first.
-
-https://docs.mongodb.com/manual/installation/
-
-Once you install MongoDB, make sure it's running.
-
-### Install the Dependencies
-
-Next, from the project folder, install the dependencies:
-
-    npm i
-
-### Populate the Database
-
-    node seed.js
+Some features include Pagination, Filtering based on priority and status and returning a paginated result on the table.
 
 
-### Start the Server
 
-    node index.js
+### Reusability
 
-This will launch the Node server on port 3900. If that port is busy, you can set a different point in config/default.json.
+Various reusable components were implemented on this project including Pagination, Table(3 different reusable parts), Select (drop down menu), Form (various render options including input, drop down menu, button within the reusable form component included.), Protected Route(Can be used for Routes that require authentication)
 
-Open up your browser and head over to:
+### Colaborator
 
-http://localhost:3900/api/statusList
+Muzyar Rad aka. Mazy
 
-You should see the list of status. That confirms that you have set up everything successfully.
+### Setup Instructions
 
-### (Optional) Environment Variables
+1. Install client dependencies
+ - `cd` to `/`
+ - `npm install` or `npm i`
+2. Start dev server
+ - `cd` to `/`
+ - `npm start`
+3. Open a browser and navigate to `localhost:3000`
+    
 
-If you look at config/default.json, you'll see a property called jwtPrivateKey. This key is used to encrypt JSON web tokens. So, for security reasons, it should not be checked into the source control. I've set a default value here to make it easier for you to get up and running with this project. For a production scenario, you should store this key as an environment variable.
-
-On Mac:
-
-    export vidly_jwtPrivateKey=yourSecureKey
-
-On Windows:
-
-    set vidly_jwtPrivateKey=yourSecureKey
