@@ -1,50 +1,43 @@
-## Introduction
+## Mazy's Bug Tracker
 
-The back-end Server of the Mazycode bug tracker developed using Node.js(Express) and MongoDB.
+This is a simple tool for raising a bug, giving it specific status and priority, specifiying the exact date that the bug was created, editing the bug.
 
-## Setup
-
-Make sure to follow all these steps exactly as explained below. Do not miss any steps or you won't be able to run this application.
-
-### Install MongoDB
-
-To run this project, you need to install the latest version of MongoDB Community Edition first.
-
-https://docs.mongodb.com/manual/installation/
-
-Once you install MongoDB, make sure it's running.
-
-### Install the Dependencies
-
-Next, from the project folder, install the dependencies:
-
-    npm i
-
-### Populate the Database
-
-    node seed.js
+Some features include Paginated data on the table, Filtering based on priority and status and returning a paginated result on the table, creating a new ticket, Ability to edit, create tickets only by authenticated users, Ability to delete tickets only by authorized(admin) user, hidden Navbar element and component for non-authenticated user, user being redirected to homepage after registering without the need to login right after.
 
 
-### Start the Server
+## Tech stack used :
 
-    node index.js
+1. Node.js(Express) for back-end
+2. React.js for front-end
+3. MongoDB (NoSQL)
+4. Axios HTTP framework for connecting the endpoints to the front-end
 
-This will launch the Node server on port 3900. If that port is busy, you can set a different point in config/default.json.
 
-Open up your browser and head over to:
 
-http://localhost:3900/api/statusList
 
-You should see the list of status. That confirms that you have set up everything successfully.
+### Reusability for front-end
 
-### (Optional) Environment Variables
+Various reusable components were implemented on this project including Pagination, Table(3 different reusable parts), Select (drop down menu), Form (various render options including input, drop down menu, button within the reusable form component included.), Protected Route(Can be used for Routes that require authentication)
 
-If you look at config/default.json, you'll see a property called jwtPrivateKey. This key is used to encrypt JSON web tokens. So, for security reasons, it should not be checked into the source control. I've set a default value here to make it easier for you to get up and running with this project. For a production scenario, you should store this key as an environment variable.
+### Colaborator
 
-On Mac:
+Muzyar Rad aka. Mazy
 
-    export vidly_jwtPrivateKey=yourSecureKey
+### Setup Instructions
 
-On Windows:
+1. Install client dependencies
+ - on the project folder `cd` to `bug_tracker_client`
+ - `npm install` or `npm i`
+2. Install server dependencies
+ - `cd` to `/`
+ - `npm install` or `npm i`
+3. Run the project
+ - `cd` to `/`
+ - npm run dev
+4. Open a browser and navigate to `localhost:3000`
 
-    set vidly_jwtPrivateKey=yourSecureKey
+
+## Need Help?
+Feel free to email me at **Muzyar.rad@gmail.com** for any inquiries or setup assistance
+    
+
