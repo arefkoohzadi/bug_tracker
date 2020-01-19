@@ -15,9 +15,16 @@ Some features include Paginated data on the table, Filtering based on priority a
 
 
 
-### Reusability for front-end
+### Reusability for front-end :
 
 Various reusable components were implemented on this project including Pagination, Table(3 different reusable parts), Select (drop down menu), Form (various render options including input, drop down menu, button within the reusable form component included.), Protected Route(Can be used for Routes that require authentication)
+
+
+## Authentication and Authorization :
+- After registering a user certain actions such as editing the existing tickets, creating a new ticket and visibility of add a bug on navbar will be available for authenticated users.
+- After logging in with username: admin@yahoo.com , password: 12345, The Admin user will only be authorized to delete each ticket from the table.
+
+
 
 ### Colaborator
 
