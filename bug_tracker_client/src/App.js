@@ -30,6 +30,7 @@ function App() {
             <Route path="/login" component={LoginForm} />
             <Route path="/notFound" component={NotFound} />
             <Redirect from="/" exact to="/bugs" />
+            <Redirect from="/" exact to="/bugs" />
             <Redirect to="/notFound" />
           </Switch>
         </main>
