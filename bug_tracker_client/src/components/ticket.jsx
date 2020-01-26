@@ -12,7 +12,7 @@ class Ticket extends Form {
       priorityId: "",
       statusId: "5e28b3af96c5af1f1873acf4"
     },
-
+    priorities: [],
     statusList: [],
     errors: {}
   };
