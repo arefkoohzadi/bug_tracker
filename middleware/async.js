@@ -4,7 +4,6 @@ module.exports = function(handler) {
       await handler(req, res);
     } catch (ex) {
       next(ex);
-      //re
     }
   };
 };
