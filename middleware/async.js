@@ -7,5 +7,3 @@ module.exports = function(handler) {
     }
   };
 };
-
-//commite
