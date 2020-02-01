@@ -5,5 +5,3 @@ module.exports = function() {
     throw new Error("FATAL ERROR: jwtPrivateKey is not defined.");
   }
 };
-
-//access the files
